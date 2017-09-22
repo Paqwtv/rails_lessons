@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<div id="profile" style="width:400px; height: 600px; float:left">
+	<div id="icon" style="clear:both;border: 2px solid black">
+		<img src="https://i.pinimg.com/736x/21/a8/e2/21a8e243cb8f39b1f7a4115f8ba1e2d4--girl-on-beach-beach-bum.jpg" width="320px" height="240px" />
+	</div>
+	<div id="vip"> 
+		<p class="info name">
+		  <strong>Name:</strong>
+		  <%= @profile.name %>
+		</p>
+
+		<p class="info s_name">
+		  <strong>Last name:</strong>
+		  <%= @profile.last_name %>
+		</p>
+
+		<p class="info s_name">
+		  <strong>Last name:</strong>
+		  <%= @profile.last_name %>
+		</p>
+	</div>
+	<p class="info">
+	  <strong>Male:</strong>
+	  <%= @profile.male %>
+	</p>
+	<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>
+</div>
+
+
+<div id="toolbox" style="width:350px; height: 600px; float:left">
+	<div style="clear:both; width:300px; height:50; border: 2px solid green">
+		<input type="checkbox" name="img_chek" >Image color On<Br>
+		<input type="radio" name="img" value="green">green 
+		<input type="radio" name="img" value="blue">blue
+		<input type="radio" name="img" value="red">red 
+
+	</div>
+</div>
+
+<div id="result">
+</div>
+<div id="result1">
+</div>
+<div id="result2">
+</div>
+<script>
+$(document).ready( function(){	Profile.ToolBar.init();
+});
+	
+</script>

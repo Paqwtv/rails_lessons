@@ -1,0 +1,51 @@
+<%= form_with(model: profile, local: true) do |form| %>
+  <% if profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% profile.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :profile_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, id: :profile_last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :male %>
+    <%= form.text_field :male, id: :profile_male %>
+  </div>
+  Card fields
+  <div style="padding-left: 25px">
+    <%- card = profile.card.nil? ? Card.new : profile.card %>
+    <%= card.inspect%>
+    <%= form.fields_for :card, card do |ff| %>
+      <div>
+        <%= ff.label :number %>
+        <%= ff.text_field :number %>
+      </div>
+          <div>
+        <%= ff.label :card_type %>
+        <%= ff.text_field :card_type %>
+      </div>
+          <div>
+        <%= ff.label :code %>
+        <%= ff.text_field :code %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
