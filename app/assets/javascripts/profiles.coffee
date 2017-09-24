@@ -4,6 +4,10 @@ namespace "Profile.ToolBar", (exports) ->
     console.log("border: 2px solid " + color)
     $("#icon").css(border: '2px solid ' + color)
 
+  text_style_change = (style) ->
+    console.log('font-weight', 'bold')
+    $('.info name').css('font-weight', 'bold')
+
 
   exports.init = () ->
     console.log("we are here");
@@ -33,8 +37,44 @@ namespace "Profile.ToolBar", (exports) ->
         success: (data, textStatus, jqXHR) ->
             $('#result').append "Successful AJAX call: #{data}"
 
-  
+#изменение стиля текста
+    text_style = $('input[type=checkbox][name=style]')
+
+    text_style.click ->
+      value = $(this).val()
+      if value == 'bold'
+        if $(this).is(":checked")
+          $('p').css('font-weight', 'bold')
+        else $('p').css('font-weight', 'normal')
+      else if value == "italic"
+        if $(this).is(":checked")
+          $('p').css('font-style', 'italic')
+        else $('p').css('font-style', 'normal')
+      else if value == 'underline'
+        if $(this).is(':checked')
+          $('p').css('text-decoration', 'underline')
+        else $('p').css('text-decoration', 'none')
+
+#изменение размера такста
+    text_size = $("input[type=radio][name=width]")
+
+    text_size.change ->
+      value = $(this).val()
+      fontSize = $("p").css("fontSize")
+      if $(this).is(":checked")
+        console.log($("p").css("fontSize", fontSize ))
+        $("p").css("fontSize", value + 'px' )
+
     
+    img_check.change ->
+      console.log("check")
+      if this.checked
+        value = default_color
+        if img_radion.is(':checked') 
+          value = $('input[type=radio][name=img]:checked').val() 
+        icon_color_change value 
+      else
+        icon_color_change default_color
 
 #    request = new XMLHttpRequest()
 #    
@@ -51,14 +91,4 @@ namespace "Profile.ToolBar", (exports) ->
 #        $('#result1').append "Successful AJAX call: #{this.response}"
 #      
 #    request.send(null);  #// No data needs to be sent along with the request.
-                                                                    #// Most libraries like jQuery/Prototype/Dojo do this
-
-    img_check.change ->
-      console.log("check")
-      if this.checked
-        value = default_color
-        if img_radion.is(':checked') 
-          value = $('input[type=radio][name=img]:checked').val() 
-        icon_color_change value 
-      else
-        icon_color_change default_color
+#// Most libraries like jQuery/Prototype/Dojo do this

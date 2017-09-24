@@ -34,10 +34,20 @@
 		<input type="checkbox" name="img_chek" >Image color On<Br>
 		<input type="radio" name="img" value="green">green 
 		<input type="radio" name="img" value="blue">blue
-		<input type="radio" name="img" value="red">red 
-
+		<input type="radio" name="img" value="red">red
+	</div>
+	<div style="clear:both; width:300px; height:50; border: 2px solid yellow">
+		<input type="checkbox" name="style" value="underline">underline
+		<input type="checkbox" name="style" value="bold">bold 
+		<input type="checkbox" name="style" value="italic">italic
+	</div>
+	<div style="clear:both; width:300px; height:50; border: 2px solid blue">
+		<input type="radio" name="width" value="10">Size 10
+		<input type="radio" name="width" value="15">Size 15 
+		<input type="radio" name="width" value="20">Size 20
 	</div>
 </div>
+
 
 <div id="result">
 </div>
@@ -46,7 +56,7 @@
 <div id="result2">
 </div>
 <script>
-$(document).ready( function(){	Profile.ToolBar.init();
-});
-	
+$(document).ready( function(){
+	Profile.ToolBar.init();
+});	
 </script>
