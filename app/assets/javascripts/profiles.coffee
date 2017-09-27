@@ -62,3 +62,45 @@ namespace "Profile.ToolBar", (exports) ->
         icon_color_change value 
       else
         icon_color_change default_color
+
+
+    #homework
+    set_css = (el, css) ->
+      console.log(el)
+      $(el).attr("style", css)
+
+    link_tool = (el, css, tool) ->
+      console.log("here1")
+      $(tool).click (event) ->
+        #get type of clicked element
+        #if type check_box or radio use algorithm
+        tag = event.target.nodeName
+        type = $(event.target).attr("type")
+        if tag == "INPUT" && (type == "radio" || type == 'checkbox')
+          ch_b = $(tool).find('input[type=checkbox]')
+          template = css[0]
+          default_v = css[1]
+          if ch_b.is(':checked')
+            radio = $(tool).find('input[type=radio]:checked').val()
+            cur_css = template.replace("value", radio)
+            console.log(radio)
+            console.log(cur_css)
+            set_css(el, cur_css)
+          else
+            cur_css = template.replace("value", default_v )
+            set_css(el, cur_css)
+    #top
+    css_template1 = ["font-size: valuepx", 13]
+    css_template2 = ["value", "font-weight: normal; font-style: normal"]
+    css_template3 = ["border: 2px solid valuepx", "black"]
+
+    select1 = "p.info"
+    select2 = "#vip p"
+    select3 = "p.info.name"
+    select4 = "p.info.s_name"
+  
+
+    link_tool(select1, css_template1, "#tool1")
+    link_tool(select2, css_template2, "#tool2")
+    link_tool(select3, css_template3, "#tool3")
+    link_tool(select4, css_template2, "#tool4")
