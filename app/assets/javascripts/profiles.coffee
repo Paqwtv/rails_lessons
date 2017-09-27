@@ -75,6 +75,23 @@ namespace "Profile.ToolBar", (exports) ->
         icon_color_change value 
       else
         icon_color_change default_color
+#запрет обновление страницы + новый div
+    
+    test_button = $("#button_a")
+    copy_button = $('<input id="copy_button" type="button" value="Нажми меня нежно">')
+
+    test_button.click (event) ->
+      $('body').append('<div id="test_button" style="width:300px; height:400px; clear:both; background-color:yellow; border: 2px solid blue"><p>New DIV</p></div>')
+      $('#button').append(copy_button)
+      event.preventDefault()
+      alert("Обновление страницы запрещено")
+ 
+      copy_button.click ->
+        #$('#test_button').is("body:last-child")
+        $('body').prepand('#test_button')
+        
+
+    
 
 #    request = new XMLHttpRequest()
 #    
